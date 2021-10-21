@@ -1,0 +1,90 @@
+{% extends "admin_header.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+
+
+
+  <body class="">
+<div class="pc-container">
+    <div class="pcoded-content">
+    <div class="row">
+                <!-- [ Gallery-Grid ] start -->
+                <div class="col-sm-12">
+                    <!-- [ Image-Grid ] start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Graph Image</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-10 col-sm-6">
+                                    <div class="thumbnail mb-4">
+                                        <div class="thumb">
+                                            <img src="data:image/png;base64,{{graph}}" alt="" class="img-fluid img-thumbnail">  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-6 ">
+                                    <a download="Graph" class="btn btn-primary" href="data:image/png;base64,{{graph}}">Download</a>
+                                    
+                                    <button id="downloadData" class="btn btn-primary"> Export Data</button>                             
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ Image-Grid ] end -->
+                </div>
+                <!-- [ Gallery-Grid ] end -->
+    </div>
+    </div>
+ </div>
+
+ <script src="{% static 'js/vendor-all.min.js' %}"></script>
+ <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
+ <script src="{% static 'js/plugins/feather.min.js' %}"></script>
+ <script src="{% static 'js/pcoded.min.js' %}"></script>
+ <!-- Apex Chart -->
+
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8H86P6FK7"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q8H86P6FK7');
+
+   $("#downloadData").on("click",()=>{
+        console.log("TEST")
+
+        $.ajax({
+              type: 'POST',
+              url:  {% url 'download' %},
+              data: {
+                "concatData": "{{ concatData }}" 
+              },
+              contenttype:"multipart/form-data",
+              success: (res) => {
+                console.log(res)
+                location.assign("{% url 'download' %}")
+              },
+              error:(err) => {
+                console.log(err)
+              }
+            })
+    })   
+</script>
+<script src="{% static 'js/%c3%a1%c2%b9%c2%adrack.html' %}"></script>
+
+<!-- custom-chart js -->
+<script src="{% static 'js/pages/dashboard-sale.js' %}"></script>
+{% endblock content %}
+</body></html>

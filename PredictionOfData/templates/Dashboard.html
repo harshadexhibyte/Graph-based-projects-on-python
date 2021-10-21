@@ -1,0 +1,131 @@
+{% extends "admin_header.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+
+
+
+<body class="">
+	
+    <!-- [ Main Content ] start -->
+
+    <div class="pc-container">
+        <div class="pcoded-content">
+         <!-- [ breadcrumb ] start -->
+         <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">UserArea</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="">Home</a></li>
+                            <li class="breadcrumb-item">Dashboard</li>
+         
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>EV Charging Tool</h5>
+                    </div>
+                    <center>
+                      <div class="form-group" style="color: red; font-weight: 500">
+                          {% if msg %}
+                          {{msg}}
+                          {% endif %}
+                      </div>
+                      <br>
+                  </center>
+                  <div class="card-body">
+                    <div class="row">
+                        <div class="row">
+                            {% if SuccessMsg %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>{{SuccessMsg}}.</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endif %}
+                            {% if FailedMsg %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{FailedMsg}}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <form class="login100-form validate-form" enctype="multipart/form-data" action="{% url 'FileUploded' %}" method="POST">
+                            {% csrf_token %}
+                           <!--  <div class="col-md-12">
+                               <div class="form-group">
+                                <label class="form-label" for="exampleInputEmail1">Batch Name</label>
+                                <input type="text" class="form-control" required id="exampleInputname1" aria-describedby="emailHelp" placeholder="Batch Name" name="batch_name">
+                            	</div>
+                        	</div>
+	                        <div class="col-md-12">
+	                           <div class="form-group">
+	                            <label class="form-label" for="exampleInputEmail1">Subject Name</label>
+	                            <input type="text" class="form-control" required id="exampleInputname1" aria-describedby="emailHelp" placeholder="Batch Name" name="subject">
+	                        	</div>
+                    		</div>
+		                    <div class="col-md-12">
+		                        <div class="form-group">
+		                            <label class="form-label" for="exampleFormControlTextarea1">Discriptions</label>
+		                            <textarea class="form-control" required id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+		                        </div>
+		                    </div>
+		                    <div class="col-md-12">
+		                        <div class="form-group">
+		                            <label class="form-label" for="exampleInputfile1">Last Date</label>
+		                            <input type="date" class="form-control" required id="exampleInputdate" name="date" placeholder="Last Date">
+		                        </div>
+		                    </div> -->
+		                    <div class="col-md-12">
+		                        <div class="form-group">
+		                            <label class="form-label" for="exampleInputPassword1">Attachment</label>
+		                            <input type="file" class="form-control" required id="exampleInputfile1" name="uplodedFile" placeholder="Attachment File">
+		                        </div>
+		                    </div>
+		                    <div class="row">
+		                        <div class="form-group col-md-6">
+		                         <button type="submit" class="btn btn-success"><i class="me-2" data-feather="check-circle"></i>Save</button>
+		                     </div>
+                 			</div> 
+             			</div>
+         				</form>
+     </div>
+ </div>
+
+ <script src="{% static 'js/vendor-all.min.js' %}"></script>
+ <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
+ <script src="{% static 'js/plugins/feather.min.js' %}"></script>
+ <script src="{% static 'js/pcoded.min.js' %}"></script>
+ <!-- Apex Chart -->
+
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8H86P6FK7"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q8H86P6FK7');
+</script>
+<script src="{% static 'js/%c3%a1%c2%b9%c2%adrack.html' %}"></script>
+
+<!-- custom-chart js -->
+<script src="{% static 'js/pages/dashboard-sale.js' %}"></script>
+{% endblock content %}
+</body></html>
