@@ -5,6 +5,34 @@
 <html>
 <head>
 	<title></title>
+	<script src="{% static 'js/form-script.js' %}"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  <style type="text/css">
+  	/*#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+.steps {
+    font-size: 25px;
+    color: gray;
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-align: right
+}
+*/
+  </style>
 </head>
 
 <body>
@@ -35,8 +63,134 @@
             </div>
         </div>
         <!-- [ breadcrumb ] end -->
-        <!-- [ Main Content ] start -->
+        <!-- _________________________________________-->
         <div class="row">
+        <form  id="msform" class="login100-form validate-form" enctype="multipart/form-data" action="{% url 'FileUploded' %}" method="POST">
+                            {% csrf_token %}
+                    <!-- progressbar -->
+                    
+                  
+                    <fieldset>
+						<div class="row">
+						            <div class="col-md-12">
+						                <div class="card">
+						                    <div class="card-header">
+						                        <h5>EV Charging Tool-1</h5>
+						                    </div>
+						                <div class="card-body">
+						                    <div class="row">  
+						                            
+						                            <div class="col-md-12">
+						                               <div class="form-group">
+						                                <label class="form-label" for="exampleInputEmail1">numerical-1</label>
+						                                <input type="text" class="form-control"  id="exampleInputname1" required="required" aria-describedby="emailHelp" placeholder="Enter Value" name="numerical1">
+						                            	</div>
+						                        	</div>
+							                       <div class="col-md-12">
+						                               <div class="form-group">
+						                                <label class="form-label" for="exampleInputEmail1">numerical-2</label>
+						                                <input type="text" class="form-control"  id="exampleInputname1" required="required" aria-describedby="emailHelp" placeholder="Enter Value" name="numerical2">
+						                            	</div>
+						                        	</div>
+								                   <div class="col-md-12">
+						                               <div class="form-group">
+						                                <label class="form-label" for="exampleInputEmail1">numerical-3</label>
+						                                <input type="text" class="form-control"  id="exampleInputname1" required="required" aria-describedby="emailHelp" placeholder="Enter Value" name="numerical3">
+						                            	</div>
+						                        	</div>
+								                   <!--  <div class="row">
+								                        <div class="form-group col-md-6">
+								                         <input type="button" name="next" class="next action-button btn btn-primary" value="Next" />
+						                 			</div> -->
+						             			</div>
+						         		</div>
+						         	</div>
+						         </div>
+						     </div>
+                    </fieldset>
+                    <fieldset>
+						<div class="row">
+						        <div class="col-md-12">
+						           <div class="card">
+						                <div class="card-header">
+						                    <h5>EV Charging Tool-2</h5>
+						                </div>
+						                <div class="card-body">
+						                    <div class="row">
+						                           
+						                           <div class="form-group">
+			                                            <label class="form-label" for="exampleFormControlSelect1">Colum 1 Multiply by </label>
+			                                            <select class="form-control" required id="exampleFormControlSelect1" name="multiply">
+			                                                <option value="1">--select--</option>
+			                                                <option value="2">2</option>
+			                                                <option value="3">3</option>
+			                                            </select>
+                                    				</div>
+							                         <div class="form-group">
+			                                            <label class="form-label" for="exampleFormControlSelect1">Colum 2 subscription by </label>
+			                                            <select class="form-control" required id="exampleFormControlSelect1" name="subscription">
+			                                                <option value="0">--select--</option>
+			                                                <option value="20">20</option>
+			                                                <option value="30">30</option>
+			                                            </select>
+			                                            
+                                    				</div>
+								                   
+						                 			<!-- <div class="row">
+								                        <div class="form-group col-md-6">
+								                        <input type="button" name="next" class="next action-button btn btn-primary" value="Next" /> 
+								                        <input type="button" name="previous" class="previous action-button-previous btn btn-primary" value="Previous" />
+						                 			</div>  -->
+						             			</div>
+						         			
+						         		</div>
+						         	</div>
+						         </div>
+						     </div>
+						 </div>
+                    </fieldset>
+                    		<fieldset>
+							         <div class="row">
+							            <div class="col-md-12">
+							                <div class="card">
+							                    <div class="card-header">
+							                        <h5>EV Charging Tool-3</h5>
+							                    </div>
+							    
+							                  <div class="card-body">
+							                    <div class="row">
+							      					 <div class="col-md-12">
+									                        <div class="form-group">
+									                            <label class="form-label" for="exampleInputPassword1">Attachment</label>
+									                            <input type="file" class="form-control" required id="exampleInputfile1" name="uplodedFile" placeholder="Attachment File">
+									                        </div>
+
+									                        <div class="card-body">
+
+									                        <div class="row">
+									                        <div class="form-group col-md-6">
+									                         <!-- input type="button" name="next" class="next action-button btn btn-primary" value="Next" /> -->
+									                         <input type="submit" name="previous" class="previous action-button-previous btn btn-primary" value="Submit" />
+							                 			</div> 
+									                   </div>
+							             		</div>
+							         		</div>
+							         	</div>
+							         </div>
+							     </div>
+							 </div>
+                    </fieldset>
+                </form>
+               </div>
+        <!-- <________________________________________ -->
+        <!-- [ Main Content ] start -->
+
+       
+
+
+        <!-- [ Main Content ] end -->
+        
+      <!--   <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -66,33 +220,33 @@
                             </div>
                             {% endif %}
                         </div>
-                        <form class="login100-form validate-form" enctype="multipart/form-data" action="{% url 'FileUploded' %}" method="POST">
+                        <form class="login100-form validate-form" enctype="multipart/form-data" action="" method="POST">
                             {% csrf_token %}
-                           <!--  <div class="col-md-12">
+                            <div class="col-md-12">
                                <div class="form-group">
                                 <label class="form-label" for="exampleInputEmail1">Batch Name</label>
-                                <input type="text" class="form-control" required id="exampleInputname1" aria-describedby="emailHelp" placeholder="Batch Name" name="batch_name">
+                                <input type="text" class="form-control"  id="exampleInputname1" aria-describedby="emailHelp" placeholder="Batch Name" name="batch_name">
                             	</div>
                         	</div>
 	                        <div class="col-md-12">
 	                           <div class="form-group">
 	                            <label class="form-label" for="exampleInputEmail1">Subject Name</label>
-	                            <input type="text" class="form-control" required id="exampleInputname1" aria-describedby="emailHelp" placeholder="Batch Name" name="subject">
+	                            <input type="text" class="form-control"  id="exampleInputname1" aria-describedby="emailHelp" placeholder="Batch Name" name="subject">
 	                        	</div>
                     		</div>
 		                    <div class="col-md-12">
 		                        <div class="form-group">
 		                            <label class="form-label" for="exampleFormControlTextarea1">Discriptions</label>
-		                            <textarea class="form-control" required id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
+		                            <textarea class="form-control"  id="exampleFormControlTextarea1" rows="3" name="desc"></textarea>
 		                        </div>
 		                    </div>
 		                    <div class="col-md-12">
 		                        <div class="form-group">
 		                            <label class="form-label" for="exampleInputfile1">Last Date</label>
-		                            <input type="date" class="form-control" required id="exampleInputdate" name="date" placeholder="Last Date">
+		                            <input type="date" class="form-control"  id="exampleInputdate" name="date" placeholder="Last Date">
 		                        </div>
-		                    </div> -->
-		                    <div class="col-md-12">
+		                    </div>
+		                   <div class="col-md-12">
 		                        <div class="form-group">
 		                            <label class="form-label" for="exampleInputPassword1">Attachment</label>
 		                            <input type="file" class="form-control" required id="exampleInputfile1" name="uplodedFile" placeholder="Attachment File">
@@ -103,11 +257,22 @@
 		                         <button type="submit" class="btn btn-success"><i class="me-2" data-feather="check-circle"></i>Save</button>
 		                     </div>
                  			</div> 
+                 			<div class="row">
+		                        <div class="form-group col-md-6">
+		                         <input type="button" name="next" class="next action-button btn btn-success" value="Next" />
+		                         <input type="button" name="previous" class="previous action-button-previous btn btn-success" value="Previous" />
+                 			</div> 
              			</div>
-         				</form>
+         				</form> 
+         				</div>
+         	</div>
+         </div>
+     </div>
+ </div> -->
      </div>
  </div>
 
+ <script src="{% static 'js/form-script.js' %}"></script>
  <script src="{% static 'js/vendor-all.min.js' %}"></script>
  <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
  <script src="{% static 'js/plugins/feather.min.js' %}"></script>

@@ -1,10 +1,14 @@
 from django.shortcuts import render,redirect
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 import datetime
 from .models import userMaster
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
+import json
+from django.http import HttpResponse
+from django.http import JsonResponse
 from io import StringIO,BytesIO
 import base64
 from openpyxl import Workbook
@@ -15,8 +19,6 @@ except ImportError:
     from io import StringIO as IO # for legacy python
 
 
-
-from django.http import HttpResponse
 
 
 def index(request):
@@ -33,23 +35,42 @@ def Dashboard(request):
 			return render(request,'index.html',{'FailedMsg':FailedMsg})
 	else:
 		return render(request,'Dashboard.html')
+def UserProfile(request):
+	user = userMaster.objects.get(email=request.session['admin_email'])
+	return render(request,'UserProfile.html',{'user':user})
 def FileUploded(request):
 	if request.method=="POST":
+		numerical1 = int(request.POST['numerical1'])
+		numerical2 = int(request.POST['numerical2'])
+		numerical3 = int(request.POST['numerical3'])
+		multiply = int(request.POST['multiply'])
+		subscription = int(request.POST['subscription'])
 		file = request.FILES['uplodedFile']
+
+		print(file,numerical1,numerical2,numerical3,multiply,subscription)
+
+
 		data = pd.read_excel(file)
 		concatData = pd.concat([data,data])
+
+		print(data)
+		data["COL1"] = (numerical1 * numerical2 * numerical3) + data["COL1"]
+		data["COL2"] = multiply * data["COL2"]
+		data["COL3"] = subscription + data["COL3"]
+		print(data)
+
 		
 		excel_file = IO()
-		
 		xlwriter = pd.ExcelWriter(excel_file, engine='xlsxwriter')
-		concatData.to_excel(xlwriter, 'sheetname')
+		val = data.to_excel(xlwriter, 'sheetname')
 		xlwriter.save()
 		xlwriter.close()
 		excel_file.seek(0)
-		response = HttpResponse(excel_file.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-		response['Content-Disposition'] = 'attachment; filename=myfile.xlsx'
+		print(xlwriter)
 		
-
+		# response = HttpResponse(excel_file.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+		# response['Content-Disposition'] = 'attachment; filename=myfile.xlsx'
+		# return response
 
 		temp = data.plot(x="COL1", y=["COL2","COL3","COL2"])
 		buffer = BytesIO()
@@ -60,18 +81,17 @@ def FileUploded(request):
 		graph = graph.decode('utf-8')
 		buffer.close()
 		# plt.show()
-		return render(request,'ViewGraph.html',{'graph':graph,'concatData':concatData})
+		return render(request,'ViewGraph.html',{'graph':graph})
 	else:
 		return render(request,'Dashboard.html')
 
-def download(request):
+@csrf_exempt
+def Download(request):
 	if request.method == 'POST':
-		Data = request.POST['data']
-		print(Data)
-		return HttpResponse("its work")
+		# return JsonResponse({"success":True})
+		pass
 	else:
 		pass
-	
 	
 def LogOut(request):
 	try:

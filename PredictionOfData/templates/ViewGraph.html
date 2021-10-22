@@ -5,6 +5,8 @@
 <html>
 <head>
 	<title></title>
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -33,8 +35,9 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-6 ">
                                     <a download="Graph" class="btn btn-primary" href="data:image/png;base64,{{graph}}">Download</a>
+                                    <a attachment; filename=myfile.xlsx class="btn btn-primary" href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{{linko}}" >Download excel file</a>
                                     
-                                    <button id="downloadData" class="btn btn-primary"> Export Data</button>                             
+                                    <!-- <button onclick="dowData()" class="btn btn-primary"> Export Data</button>          -->                    
                                     
                                 </div>
                             </div>
@@ -50,7 +53,7 @@
  <script src="{% static 'js/vendor-all.min.js' %}"></script>
  <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
  <script src="{% static 'js/plugins/feather.min.js' %}"></script>
- <script src="{% static 'js/pcoded.min.js' %}"></script>
+ <!-- <script src="{% static 'js/pcoded.min.js' %}"></script> -->
  <!-- Apex Chart -->
 
 
@@ -61,30 +64,33 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-Q8H86P6FK7');
-
-   $("#downloadData").on("click",()=>{
-        console.log("TEST")
-
-        $.ajax({
-              type: 'POST',
-              url:  {% url 'download' %},
-              data: {
-                "concatData": "{{ concatData }}" 
-              },
-              contenttype:"multipart/form-data",
-              success: (res) => {
-                console.log(res)
-                location.assign("{% url 'download' %}")
-              },
-              error:(err) => {
-                console.log(err)
-              }
-            })
-    })   
 </script>
-<script src="{% static 'js/%c3%a1%c2%b9%c2%adrack.html' %}"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi?key=INSERT-YOUR-KEY"></script>
+<script type="text/javascript">
+   function dowData(){
+    console.log("Click");
+    
+    // $.ajax({
+    //           type: 'POST',
+    //           url:  "{% url 'Download' %}",
+    //           data: {
+    //             "JsonData":JSON.stringify(concatData), 
+    //           },
+    //           contenttype:"multipart/form-data",
+    //           success: (res) => {
+    //             console.log(res)
+    //             location.assign("{% url 'Download' %}")
+    //           },
+    //           error:(err) => {
+    //             console.log(err,"AJAX Err")
+    //           }
+    //         })
+    // console.log("End")
+   } 
+ 
+</script>
 
 <!-- custom-chart js -->
-<script src="{% static 'js/pages/dashboard-sale.js' %}"></script>
+
 {% endblock content %}
 </body></html>
