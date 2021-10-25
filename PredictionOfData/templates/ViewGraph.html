@@ -35,9 +35,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-6 ">
                                     <a download="Graph" class="btn btn-primary" href="data:image/png;base64,{{graph}}">Download</a>
-                                    <a attachment; filename=myfile.xlsx class="btn btn-primary" href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{{linko}}" >Download excel file</a>
-                                    
-                                    <!-- <button onclick="dowData()" class="btn btn-primary"> Export Data</button>          -->                    
+                                    <button onclick="dowData()" class="btn btn-primary">Download Excel File</button>                             
                                     
                                 </div>
                             </div>
@@ -69,23 +67,24 @@
 <script type="text/javascript">
    function dowData(){
     console.log("Click");
-    
-    // $.ajax({
-    //           type: 'POST',
-    //           url:  "{% url 'Download' %}",
-    //           data: {
-    //             "JsonData":JSON.stringify(concatData), 
-    //           },
-    //           contenttype:"multipart/form-data",
-    //           success: (res) => {
-    //             console.log(res)
-    //             location.assign("{% url 'Download' %}")
-    //           },
-    //           error:(err) => {
-    //             console.log(err,"AJAX Err")
-    //           }
-    //         })
-    // console.log("End")
+    console.log("{{ xlsx_data }}")
+   
+
+    $.ajax({
+              type: 'POST',
+              url:  "{% url 'Download' %}",
+              data: {
+                "xlsx_data":'{{xlsx_data}}',
+              },
+              contenttype:"multipart/form-data",
+              success: (res) => {
+                console.log(res)
+              },
+              error:(err) => {
+                console.log(err,"AJAX Err")
+              }
+            })
+    console.log("End")
    } 
  
 </script>

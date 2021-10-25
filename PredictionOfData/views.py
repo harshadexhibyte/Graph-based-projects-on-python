@@ -47,17 +47,14 @@ def FileUploded(request):
 		subscription = int(request.POST['subscription'])
 		file = request.FILES['uplodedFile']
 
-		print(file,numerical1,numerical2,numerical3,multiply,subscription)
-
-
 		data = pd.read_excel(file)
 		concatData = pd.concat([data,data])
 
-		print(data)
+		
 		data["COL1"] = (numerical1 * numerical2 * numerical3) + data["COL1"]
 		data["COL2"] = multiply * data["COL2"]
 		data["COL3"] = subscription + data["COL3"]
-		print(data)
+		
 
 		
 		excel_file = IO()
@@ -66,11 +63,13 @@ def FileUploded(request):
 		xlwriter.save()
 		xlwriter.close()
 		excel_file.seek(0)
-		print(xlwriter)
-		
+		xlsx_data = excel_file
+		print(xlsx_data)
+
 		# response = HttpResponse(excel_file.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 		# response['Content-Disposition'] = 'attachment; filename=myfile.xlsx'
 		# return response
+		
 
 		temp = data.plot(x="COL1", y=["COL2","COL3","COL2"])
 		buffer = BytesIO()
@@ -81,17 +80,21 @@ def FileUploded(request):
 		graph = graph.decode('utf-8')
 		buffer.close()
 		# plt.show()
-		return render(request,'ViewGraph.html',{'graph':graph})
+		return render(request,'ViewGraph.html',{'graph':graph,'xlsx_data':xlsx_data})
 	else:
 		return render(request,'Dashboard.html')
 
 @csrf_exempt
 def Download(request):
 	if request.method == 'POST':
-		# return JsonResponse({"success":True})
-		pass
+		excel_file = request.POST['xlsx_data'] 
+		print(type(excel_file))
+		response = HttpResponse(excel_file, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+		response['Content-Disposition'] = 'attachment; filename=ExcelData.xlsx'
+		return response
+		# return HttpResponse(excel_file, content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 	else:
-		pass
+		return JsonResponse({"success":True})
 	
 def LogOut(request):
 	try:
