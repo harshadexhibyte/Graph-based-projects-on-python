@@ -35,7 +35,8 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-6 ">
                                     <a download="Graph" class="btn btn-primary" href="data:image/png;base64,{{graph}}">Download</a>
-                                    <button onclick="dowData()" class="btn btn-primary">Download Excel File</button>                             
+                                    {% comment %} <button onclick="dowData()" class="btn btn-primary">Download Excel File</button>    {% endcomment %}
+                                    <a class="btn btn-primary" href="{% url 'Download' %}">Download Excel File</a>                          
                                     
                                 </div>
                             </div>
@@ -64,12 +65,10 @@
   gtag('config', 'G-Q8H86P6FK7');
 </script>
 <script type="text/javascript" src="http://www.google.com/jsapi?key=INSERT-YOUR-KEY"></script>
+{% comment %} 
 <script type="text/javascript">
    function dowData(){
     console.log("Click");
-    console.log("{{ xlsx_data }}")
-   
-
     $.ajax({
               type: 'POST',
               url:  "{% url 'Download' %}",
@@ -87,7 +86,8 @@
     console.log("End")
    } 
  
-</script>
+</script> 
+{% endcomment %}
 
 <!-- custom-chart js -->
 
