@@ -1,0 +1,191 @@
+{% extends "admin_header.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="{% static 'js/form-script.js' %}"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+  <style type="text/css">
+  	/*#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+.steps {
+    font-size: 25px;
+    color: gray;
+    margin-bottom: 10px;
+    font-weight: normal;
+    text-align: right
+}
+*/
+  </style>
+</head>
+
+<body>
+
+
+
+<body class="">
+	
+    <!-- [ Main Content ] start -->
+
+    <div class="pc-container">
+    <div class="pcoded-content">
+        
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">User Area</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="">Home</a></li>
+                            <li class="breadcrumb-item">Profile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <!-- [ sample-page ] start -->
+            <div class="col-lg-4">
+                <div class="card user-card user-card-1">
+                    <div class="card-body pb-0">
+                        <div class="float-end">
+                            <span class="badge bg-light-success">Active</span>
+                        </div>
+                        <div class="media user-about-block align-items-center mt-0 mb-3">
+                            <div class="position-relative d-inline-block">
+                                <img class="img-radius img-fluid wid-80" src="{% static 'images/user.png' %}" alt="User image">
+                                <div class="certificated-badge">
+                                    <i class="fas fa-certificate text-primary bg-icon"></i>
+                                    <i class="fas fa-check front-icon text-white"></i>
+                                </div>
+                            </div>
+                            <div class="media-body ms-3">
+                                <h6 class="mb-1">{{user.fname}}</h6>
+                                <p class="mb-0 text-muted"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <span class="f-w-500"><i class="feather icon-mail m-r-10"></i>Email</span>
+                            <a href="mailto:demo@sample" class="float-end text-body">{{user.email}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="f-w-500"><i class="feather icon-phone-call m-r-10"></i>Phone</span>
+                            <a href="#" class="float-end text-body">+91 7788856999</a>
+                        </li>
+                        <li class="list-group-item border-bottom-0">
+                            <span class="f-w-500"><i class="feather icon-map-pin m-r-10"></i>Location</span>
+                            <span class="float-end">Surat</span>
+                        </li>
+                        
+                    </ul>
+                    <div class="card-body">
+                        
+                    </div>
+                    
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Options</h5>
+                        <div class="card-header-right">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="nav flex-column nav-pills list-group list-group-flush list-pills" id="user-set-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link list-group-item list-group-item-action active"  href="" role="tab" aria-controls="user-set-profile" aria-selected="true">
+                            <span class="f-w-500"><i class="feather icon-user m-r-10 h5 "></i>Profile Informations</span>
+                            <span class="float-end"><i class="feather icon-chevron-right"></i></span>
+                        </a>
+                        <a class="nav-link list-group-item list-group-item-action"  href="" role="tab" aria-controls="user-set-passwort" aria-selected="false">
+                            <span class="f-w-500"><i class="feather icon-shield m-r-10 h5 "></i>Change Password</span>
+                            <span class="float-end"><i class="feather icon-chevron-right"></i></span>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="tab-content" id="user-set-tabContent">
+                    <div class="tab-pane fade show active" id="user-set-profile" role="tabpanel" aria-labelledby="user-set-profile-tab">
+    
+                        <div class="card">
+                            <div class="card-header">
+                                <h5><i data-feather="user" class="icon-svg-primary wid-20"></i><span class="p-l-5">Activity</span></h5>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="mb-3"></h5>
+                                <table class="table table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                        <tr>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                            <td class=""></td>
+                                        </tr>
+                                         
+
+                                    </tbody>
+                                </table>
+                                <!-- Education -->
+                               
+                                 
+                            </div>
+                        </div>
+                    </div>
+                   
+                   
+                </div>
+            </div>
+            <!-- [ sample-page ] end -->
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+ <script src="{% static 'js/form-script.js' %}"></script>
+ <script src="{% static 'js/vendor-all.min.js' %}"></script>
+ <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
+ <script src="{% static 'js/plugins/feather.min.js' %}"></script>
+ <script src="{% static 'js/pcoded.min.js' %}"></script>
+ <!-- Apex Chart -->
+
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8H86P6FK7"></script>
+ <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q8H86P6FK7');
+</script>
+<script src="{% static 'js/%c3%a1%c2%b9%c2%adrack.html' %}"></script>
+
+<!-- custom-chart js -->
+<script src="{% static 'js/pages/dashboard-sale.js' %}"></script>
+{% endblock content %}
+</body></html>

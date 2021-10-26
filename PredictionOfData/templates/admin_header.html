@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'images/favicon-icon.png' %}" type="image/x-icon">
+
+    <!-- font css -->
+    <link rel="stylesheet" href="{% static 'fonts/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/material.css' %}">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" id="main-style-link">
+    <link rel="stylesheet" href="{% static 'css/customizer.css' %}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Two+Tone|Material+Icons+Sharp">
+
+
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+	<!-- [ Mobile header ] start -->
+	<div class="pc-mob-header pc-header">
+		<div class="pcm-logo">
+			<img src="{% static 'images/logo-white.png' %}" alt="" class="logo logo-lg">
+		</div>
+		<div class="pcm-toolbar">
+			<a href="#!" class="pc-head-link" id="mobile-collapse">
+				<div class="hamburger hamburger--arrowturn">
+					<div class="hamburger-box">
+						<div class="hamburger-inner"></div>
+					</div>
+				</div>
+				<!-- <i data-feather="menu"></i> -->
+			</a>
+			</a>
+			<a href="#!" class="pc-head-link" id="header-collapse">
+				<i data-feather="more-vertical"></i>
+			</a>
+		</div>
+	</div>
+	<!-- [ Mobile header ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pc-sidebar">
+		<div class="navbar-wrapper">
+			<div class="m-header">
+				<a href="" class="b-brand p-4">
+					<!-- ========   logo hear   ============ -->
+					<img src="{% static 'images/favicon-icon.png' %}" alt="" class="logo logo-lg img-fluid wid-50">
+					<img src="{% static 'images/favicon-icon.png" alt="" class="logo logo-sm">
+				</a>
+			</div>
+			<div class="navbar-content">
+				<ul class="pc-navbar">
+					<li class="pc-item pc-caption">
+						<label>Dashboard</label>
+					</li>
+					<li class="pc-item pc-hasmenu">
+						<a href="{% url 'Dashboard' %}" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">home</i></span><span class="pc-mtext">Dashboard</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+					</li>
+					<li class="pc-item pc-caption">
+						<label>Profile</label>
+					</li>
+					<li class="pc-item pc-hasmenu">
+						<a href="{% url 'UserProfile' %}" class="pc-link "><span class="pc-micon"><i class="material-icons-two-tone">account_circle</i></span><span class="pc-mtext">Profile</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+					</li>
+					<li class="pc-item pc-caption">
+						<label>Logout</label>
+					</li>
+					<li class="pc-item pc-hasmenu">
+						<a href="{% url 'LogOut' %}" class="pc-link ">
+						<span class="pc-micon"><i class="material-icons-two-tone">logout</i></span>
+						<span class="pc-mtext">Logout</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header class="pc-header ">
+		<div class="header-wrapper">
+			<div class="ms-auto">
+				<ul class="list-unstyled">
+					<li class="dropdown pc-h-item">
+						
+
+						<div class="dropdown-menu dropdown-menu-end pc-h-dropdown drp-search">
+							<form class="px-3">
+								<div class="form-group mb-0 d-flex align-items-center">
+									<i data-feather="search"></i>
+								</div>
+							</form>
+						</div>
+					</li>
+					
+					
+					<li class="dropdown pc-h-item">
+						<a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+							
+							<img src="{% static 'images/favicon-icon.png' %}" alt="user-image" class="user-avtar">
+							
+							<span>
+								<span class="user-name"></span>
+								<span class="user-desc ">USER</span>
+							</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
+							<div class=" dropdown-header">
+								<h5 class="text-overflow m-0"><span class="badge bg-light-success">Online</span></h5>
+							</div>
+							<a href="" class="dropdown-item">
+								<i class="material-icons-two-tone">account_circle</i>
+								<span>Profile</span>
+							</a>
+							<a href="" class="dropdown-item">
+								<span class="material-icons-two-tone">vpn_key</span>
+								<span>Change Password</span>
+							</a>
+							<a href="{% url 'LogOut' %}" class="dropdown-item">
+									<span class="material-icons-two-tone">logout</span>
+								<span>Logout</span>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</header>
+
+	
+<!-- [ Main Content ] start -->
+
+    <!-- Required Js -->
+    <script src="{% static 'js/vendor-all.min' %}"></script>
+    <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugins/feather.min.js' %}"></script>
+    <script src="{% static 'js/pcoded.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+<!-- Apex Chart -->
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8H86P6FK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q8H86P6FK7');
+</script>
+
+
+
+
+{% block content %}
+
+{% endblock content %}
+
+</body>
+
+</html>
